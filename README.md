@@ -18,5 +18,5 @@ Because this is only extend which can properly merge ES5 property descriptors, w
 So you don't lose any of your property descriptors when extending your objects.
 
 
-Also you won't lose a setter when object which is extending base has a value, then the setter is not replaced, but instead it is called with the value as you would probably expect.
+Also you won't lose a setter when object which is extending base has a value. In that case the setter is not replaced, but instead it is called with the value as you would probably expect.
 
