@@ -1,4 +1,4 @@
-require('./object-extend');
+require('./o.extend');
 var a = {get prop() {return [];}};
 
 var c = {
