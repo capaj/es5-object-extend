@@ -16,6 +16,18 @@ module.exports = {
 		test.equals(Object.getOwnPropertyDescriptor(extended, 'prop').get.toString(), "function prop() {return [];}");
 		test.done();
 	},
+	getterOnProto: function(test) {
+		var Ct = function() {};
+		Ct.prototype = {
+			get prop() {return this._b;},
+			set prop(val){this._b = val; }
+		};
+
+		var inst = new Ct();
+		inst.extend({prop: 5});
+		test.equals(inst._b, 5);
+		test.done();
+	},
 	typical: function(test) {
 		c.extend(d);
 		test.equals(c.name, 'b');

@@ -1,8 +1,8 @@
 Object.defineProperty(Object.prototype, "extend", {
-    enumerable: false,
+	enumerable: false,
 	writable: true,
 	value: function(from) {
-        var props = Object.getOwnPropertyNames(from);
+		var props = Object.getOwnPropertyNames(from);
 		var index = props.length;
 		while(index--) {
 			var prop = props[index];
@@ -13,20 +13,23 @@ Object.defineProperty(Object.prototype, "extend", {
 				destination = Object.getOwnPropertyDescriptor(from, prop);
 			}
 
-			if (this.hasOwnProperty(prop)) {
-				if (destination.value && typeof Object.getOwnPropertyDescriptor(this, prop).set === 'function') {
+			var thisProps = Object.getOwnPropertyDescriptor(this, prop);
+			if (!thisProps) {
+				thisProps = Object.getOwnPropertyDescriptor(this.__proto__, prop);
+			}
+			if (thisProps) {
+				if (destination.value && typeof thisProps.set === 'function') {
 					this[prop] = from[prop];
 				} else {
-					var mergedProps = Object.getOwnPropertyDescriptor(this, prop);
 					var descriptorProps = Object.getOwnPropertyNames(destination);
 					var i = descriptorProps.length;
 					while(i--) {
 						var descProp = descriptorProps[i];
 						if (destination[descProp] !== undefined) {
-							mergedProps[descProp] = destination[descProp];
+							thisProps[descProp] = destination[descProp];
 						}
 					}
-					Object.defineProperty(this, prop, mergedProps);
+					Object.defineProperty(this, prop, thisProps);
 					return this;
 				}
 			} else {
@@ -35,6 +38,6 @@ Object.defineProperty(Object.prototype, "extend", {
 
 		}
 
-        return this;
-    }
+		return this;
+	}
 });
