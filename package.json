@@ -1,0 +1,30 @@
+{
+	"name": "Object.extend",
+	"description": "Object.extend() which works well with ES5 getters and setters",
+	"url": "https://github.com/capaj/es5-object-extend",
+	"keywords": [
+		"getter",
+		"setter",
+		"ES5",
+		"extend",
+		"Object extend"
+	],
+	"author": {
+		"name": "Jiří Špác",
+		"email": "capajj@gmail.com"
+	},
+	"main": "./object-extend.js",
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/capaj/es5-object-extend.git"
+	},
+	"devDependencies": {
+		"nodeunit": "~0.8.1"
+	},
+	"version": "0.1.0",
+	"license": "MIT",
+	"engines": {
+		"node": "*"
+	},
+	"readmeFilename": "README.md"
+}
