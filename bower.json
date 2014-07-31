@@ -1,0 +1,12 @@
+{
+    "name": "o.extend",
+    "version": "0.1.0",
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        ".idea",
+        "components",
+        "npm-debug.log",
+        "test.js"
+    ]
+}
