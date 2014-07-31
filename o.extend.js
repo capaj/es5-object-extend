@@ -1,6 +1,7 @@
 Object.defineProperty(Object.prototype, "extend", {
     enumerable: false,
-    value: function(from) {
+	writable: true,
+	value: function(from) {
         var props = Object.getOwnPropertyNames(from);
 		var index = props.length;
 		while(index--) {
