@@ -69,5 +69,24 @@ module.exports = {
 		test.equals(base.prop, 5);
 
 		test.done();
+	},
+	ownPropsCopy: function(test) {
+		var Ct = function() {
+			this.secondProp = 1;
+		};
+		Ct.prototype = {
+			get prop() {return this._b;},
+			set prop(val){this._b = val; }
+		};
+
+		var obj = {prop: 5};
+		obj.copyOwnProperties(new Ct());
+
+		test.equals(obj.secondProp, 1);
+		test.equals(obj.prop, 5);
+		test.equals(obj._b, undefined);
+
+		test.done();
+
 	}
 };

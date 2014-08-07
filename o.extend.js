@@ -22,9 +22,8 @@ Object.defineProperty(Object.prototype, "extend", {
 					this[prop] = from[prop];
 				} else {
 					var descriptorProps = Object.getOwnPropertyNames(destination);
-					var i = descriptorProps.length;
-					while(i--) {
-						var descProp = descriptorProps[i];
+					var descProp;
+					while(descProp = descriptorProps.pop()) {	//iterate over property descriptor and copy each property from one to
 						if (destination[descProp] !== undefined) {
 							thisProps[descProp] = destination[descProp];
 						}
@@ -36,6 +35,22 @@ Object.defineProperty(Object.prototype, "extend", {
 				Object.defineProperty(this, prop, destination);
 			}
 
+		}
+
+		return this;
+	}
+});
+
+Object.defineProperty(Object.prototype, "copyOwnProperties", {	//a fast version for when you really just extend
+	enumerable: false,
+	writable: true,
+	value: function(from) {
+		var props = Object.getOwnPropertyNames(from);
+		var prop;
+		while(prop = props.pop()) {
+			if (from.propertyIsEnumerable(prop)) {
+				this[prop] = from[prop];
+			}
 		}
 
 		return this;
