@@ -6,6 +6,7 @@ Object.defineProperty(Object.prototype, "extend", {
 		var index = props.length;
 		while(index--) {
 			var prop = props[index];
+
 			var destination;
 			if ('object' == typeof from[prop] && 'undefined' == typeof from[prop].indexOf && 'undefined' != typeof this[prop]) {
 				destination = this[prop].extend(from[prop]);
@@ -29,7 +30,6 @@ Object.defineProperty(Object.prototype, "extend", {
 						}
 					}
 					Object.defineProperty(this, prop, thisProps);
-					return this;
 				}
 			} else {
 				Object.defineProperty(this, prop, destination);

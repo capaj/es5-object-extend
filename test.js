@@ -11,6 +11,13 @@ var d = {
 };
 
 module.exports = {
+	numbers: function(test) {
+		var extended = {a:10, b: 0, c: -10};
+		extended.extend({a:0, b:20, g: 0});
+
+		test.deepEqual({a:0, b: 20, c:-10, g: 0}, extended);
+		test.done();
+	},
 	getter: function (test) {
 		var extended = {}.extend(a);
 		test.equals(Object.getOwnPropertyDescriptor(extended, 'prop').get.toString(), "function prop() {return [];}");
