@@ -2,16 +2,19 @@ o.extend
 ====================
 
 Object.prototype.extend() for node.js and the browser. ES5 compatible. ES5 incompatible enviroments are not supported(IE8 and less).
-
+Has also a method Object.prototype.copyOwnProperties() which is much much simpler and faster.
 #Usage
     
     var extended = {b:1}.extend({a:2});
     //extended === {a:2, b:1}
+    var extended = {b:1}.copyOwnProperties({a:2});
+    //extended === {a:2, b:1}
     
 For usage examples, take a look at unit tests: https://github.com/capaj/o.extend/blob/master/test.js
 
-Available via bower:
-
+Available via jspm/bower:
+    
+    jspm install github:capaj/o.extend
     bower install o.extend
   
 or npm:
