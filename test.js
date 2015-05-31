@@ -13,13 +13,13 @@ var d = {
 module.exports = {
 	numbers: function(test) {
 		var extended = {a:10, b: 0, c: -10};
-		extended.extend({a:0, b:20, g: 0});
+		Object.extend(extended, {a:0, b:20, g: 0});
 
 		test.deepEqual({a:0, b: 20, c:-10, g: 0}, extended);
 		test.done();
 	},
 	getter: function (test) {
-		var extended = {}.extend(a);
+		var extended = Object.extend({}, a);
 		test.equals(Object.getOwnPropertyDescriptor(extended, 'prop').get.toString(), "function prop() {return [];}");
 		test.done();
 	},
@@ -31,19 +31,19 @@ module.exports = {
 		};
 
 		var inst = new Ct();
-		inst.extend({prop: 5});
+		Object.extend(inst, {prop: 5});
 		test.equals(inst._b, 5);
 		test.done();
 	},
 	typical: function(test) {
-		c.extend(d);
+		Object.extend(c, d);
 		test.equals(c.name, 'b');
 		test.equals(c.author, 'username');
 		test.done();
 	},
 	getterOverriden: function (test) {
 		var override = {get prop() {return 2;}};
-		a.extend(override);
+		Object.extend(a, override);
 
 		test.equals(a.prop, 2);
 
@@ -57,7 +57,7 @@ module.exports = {
 		};
 
 		var override = {set prop(val){this._c = val;}};
-		base.extend(override);
+		Object.extend(base, override);
 		base.prop = 6;
 
 		test.equals(base.prop, 3);
@@ -70,7 +70,7 @@ module.exports = {
 		var base = {get prop() {return this._b;}, set prop(val){this._b = val;}};
 
 		var override = {prop: 5};
-		base.extend(override);
+		Object.extend(base, override);
 
 		test.equals(base._b, 5);
 		test.equals(base.prop, 5);
@@ -87,7 +87,7 @@ module.exports = {
 		};
 
 		var obj = {prop: 5};
-		obj.copyOwnProperties(new Ct());
+		Object.copyOwnProperties(obj, new Ct());
 
 		test.equals(obj.secondProp, 1);
 		test.equals(obj.prop, 5);
