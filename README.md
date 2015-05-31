@@ -5,9 +5,9 @@ Object.prototype.extend() for node.js and the browser. ES5 compatible. ES5 incom
 Has also a method Object.prototype.copyOwnProperties() which is much much simpler and faster.
 #Usage
     
-    var extended = {b:1}.extend({a:2});
+    var extended = Object.extend({b:1}, {a:2});
     //extended === {a:2, b:1}
-    var extended = {b:1}.copyOwnProperties({a:2});
+    var extended = Object.copyOwnProperties({b:1}, {a:2});
     //extended === {a:2, b:1}
     
 For usage examples, take a look at unit tests: https://github.com/capaj/o.extend/blob/master/test.js

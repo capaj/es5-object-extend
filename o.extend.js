@@ -9,7 +9,7 @@ Object.defineProperty(Object, "extend", {
 
 			var destination;
 			if ('object' == typeof from[prop] && 'undefined' == typeof from[prop].indexOf && 'undefined' != typeof to[prop]) {
-				destination = to[prop].extend(from[prop]);
+				destination = Object.extend(to[prop], from[prop]);
 			} else {
 				destination = Object.getOwnPropertyDescriptor(from, prop);
 			}

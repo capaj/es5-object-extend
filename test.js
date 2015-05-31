@@ -18,6 +18,13 @@ module.exports = {
 		test.deepEqual({a:0, b: 20, c:-10, g: 0}, extended);
 		test.done();
 	},
+	deep: function(test) {
+		var extended = {a: {b: 0, c: -10}};
+		Object.extend(extended, {a: {b:20, g: 0}});
+
+		test.deepEqual({a: {b: 20, c:-10, g: 0}}, extended);
+		test.done();
+	},
 	getter: function (test) {
 		var extended = Object.extend({}, a);
 		test.equals(Object.getOwnPropertyDescriptor(extended, 'prop').get.toString(), "function prop() {return [];}");
