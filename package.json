@@ -18,10 +18,13 @@
 		"type": "git",
 		"url": "git://github.com/capaj/o.extend.git"
 	},
+	"scripts": {
+		"test": "nodeunit test.js"
+	},
 	"devDependencies": {
 		"nodeunit": "~0.9"
 	},
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"license": "MIT",
 	"engines": {
 		"node": "*"
