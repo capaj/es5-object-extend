@@ -18,7 +18,7 @@ if (!Object.hasOwnProperty('extend')) {
 
         var thisProps = Object.getOwnPropertyDescriptor(to, prop)
         if (!thisProps) {
-          thisProps = Object.getOwnPropertyDescriptor(to.__proto__, prop)
+          thisProps = Object.getOwnPropertyDescriptor(Object.getPrototypeOf(to), prop)
         }
         if (thisProps) {
           if (destination.value && typeof thisProps.set === 'function') {
